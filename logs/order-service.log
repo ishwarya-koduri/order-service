@@ -1,0 +1,678 @@
+2026-04-25 06:47:31.474 [background-preinit] [] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-04-25 06:47:31.551 [main] [] INFO  com.fooddelivery.orderservice.OrderServiceApplication - Starting OrderServiceApplication using Java 17.0.12 with PID 33820 (C:\Users\padkodur\Documents\Order Service\order-service\order-service\target\classes started by padkodur in C:\Users\padkodur\Documents\Order Service\order-service\order-service)
+2026-04-25 06:47:31.558 [main] [] DEBUG com.fooddelivery.orderservice.OrderServiceApplication - Running with Spring Boot v3.2.5, Spring v6.1.6
+2026-04-25 06:47:31.561 [main] [] INFO  com.fooddelivery.orderservice.OrderServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-25 06:47:35.495 [main] [] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-25 06:47:35.678 [main] [] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 162 ms. Found 4 JPA repository interfaces.
+2026-04-25 06:47:37.609 [main] [] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-25 06:47:37.645 [main] [] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-04-25 06:47:37.658 [main] [] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-25 06:47:37.659 [main] [] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-04-25 06:47:38.040 [main] [] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-25 06:47:38.041 [main] [] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 6383 ms
+2026-04-25 06:47:38.566 [main] [] DEBUG com.fooddelivery.orderservice.filter.AuthFilter - Filter 'authFilter' configured for use
+2026-04-25 06:47:38.566 [main] [] DEBUG com.fooddelivery.orderservice.filter.MdcLoggingFilter - Filter 'mdcLoggingFilter' configured for use
+2026-04-25 06:47:38.788 [main] [] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-25 06:47:39.508 [main] [] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7b1c501d
+2026-04-25 06:47:39.511 [main] [] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-25 06:47:39.701 [main] [] INFO  org.flywaydb.core.internal.license.VersionPrinter - Flyway Community Edition 9.22.3 by Redgate
+2026-04-25 06:47:39.701 [main] [] INFO  org.flywaydb.core.internal.license.VersionPrinter - See release notes here: https://rd.gt/416ObMi
+2026-04-25 06:47:39.702 [main] [] INFO  org.flywaydb.core.internal.license.VersionPrinter - 
+2026-04-25 06:47:39.747 [main] [] INFO  org.flywaydb.core.internal.resource.ResourceNameValidator - 1 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-04-25 06:47:39.747 [main] [] INFO  org.flywaydb.core.internal.resource.ResourceNameValidator - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-04-25 06:47:39.760 [main] [] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/orderdb (PostgreSQL 13.3)
+2026-04-25 06:47:39.910 [main] [] INFO  org.flywaydb.core.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.095s)
+2026-04-25 06:47:39.937 [main] [] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "public": 2
+2026-04-25 06:47:39.944 [main] [] INFO  org.flywaydb.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-04-25 06:47:40.211 [main] [] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-25 06:47:40.522 [main] [] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-25 06:47:40.599 [main] [] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-25 06:47:41.168 [main] [] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-25 06:47:43.379 [main] [] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-25 06:47:43.477 [main] [] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-25 06:47:44.007 [main] [] INFO  org.springframework.data.jpa.repository.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-25 06:47:45.035 [main] [] INFO  com.fooddelivery.orderservice.config.KafkaConfig - producerFactory started — bootstrapServers=localhost:9092
+2026-04-25 06:47:45.037 [main] [] INFO  com.fooddelivery.orderservice.config.KafkaConfig - producerFactory completed — producer configured with acks=all idempotence=true
+2026-04-25 06:47:45.116 [main] [] INFO  com.fooddelivery.orderservice.config.KafkaConfig - consumerFactory started — bootstrapServers=localhost:9092 groupId=order-service-group
+2026-04-25 06:47:45.118 [main] [] INFO  com.fooddelivery.orderservice.config.KafkaConfig - consumerFactory completed — groupId=order-service-group
+2026-04-25 06:47:45.152 [main] [] INFO  com.fooddelivery.orderservice.config.SwaggerConfig - openAPI started — configuring Swagger metadata
+2026-04-25 06:47:45.157 [main] [] INFO  com.fooddelivery.orderservice.config.SwaggerConfig - openAPI completed — Swagger metadata configured
+2026-04-25 06:47:46.926 [main] [] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 4 endpoint(s) beneath base path '/actuator'
+2026-04-25 06:47:47.122 [main] [] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2026-04-25 06:47:47.164 [main] [] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+2026-04-25 06:47:47.410 [main] [] INFO  org.springframework.kafka.core.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-delivery-notification-group-1, groupId=delivery-notification-group] Subscribed to topic(s): order-status-changed
+2026-04-25 06:47:47.461 [main] [] INFO  com.fooddelivery.orderservice.OrderServiceApplication - Started OrderServiceApplication in 16.831 seconds (process running for 18.784)
+2026-04-25 06:47:48.660 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  org.springframework.kafka.listener.KafkaMessageListenerContainer - delivery-notification-group: partitions assigned: [order-status-changed-0]
+2026-04-25 06:47:59.711 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  org.springframework.kafka.listener.KafkaMessageListenerContainer - delivery-notification-group: partitions revoked: [order-status-changed-0]
+2026-04-25 06:47:59.713 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  org.springframework.kafka.core.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-delivery-notification-group-1, groupId=delivery-notification-group] Unsubscribed all topics or patterns and assigned partitions
+2026-04-25 06:48:00.016 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  org.springframework.kafka.listener.KafkaMessageListenerContainer - delivery-notification-group: Consumer stopped
+2026-04-25 06:48:00.046 [SpringApplicationShutdownHook] [] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-25 06:48:00.049 [SpringApplicationShutdownHook] [] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-25 06:48:00.058 [SpringApplicationShutdownHook] [] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-25 07:25:35.024 [background-preinit] [] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-04-25 07:25:35.154 [main] [] INFO  com.fooddelivery.orderservice.OrderServiceApplication - Starting OrderServiceApplication using Java 17.0.12 with PID 26064 (C:\Users\padkodur\Documents\Order Service\order-service\order-service\target\classes started by padkodur in C:\Users\padkodur\Documents\Order Service\order-service\order-service)
+2026-04-25 07:25:35.161 [main] [] DEBUG com.fooddelivery.orderservice.OrderServiceApplication - Running with Spring Boot v3.2.5, Spring v6.1.6
+2026-04-25 07:25:35.163 [main] [] INFO  com.fooddelivery.orderservice.OrderServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-25 07:25:38.692 [main] [] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-25 07:25:38.873 [main] [] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 153 ms. Found 4 JPA repository interfaces.
+2026-04-25 07:25:41.419 [main] [] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-25 07:25:41.458 [main] [] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-04-25 07:25:41.463 [main] [] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-25 07:25:41.465 [main] [] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-04-25 07:25:41.651 [main] [] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-25 07:25:41.656 [main] [] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 6362 ms
+2026-04-25 07:25:42.291 [main] [] DEBUG com.fooddelivery.orderservice.filter.AuthFilter - Filter 'authFilter' configured for use
+2026-04-25 07:25:42.291 [main] [] DEBUG com.fooddelivery.orderservice.filter.MdcLoggingFilter - Filter 'mdcLoggingFilter' configured for use
+2026-04-25 07:25:42.767 [main] [] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-25 07:25:43.723 [main] [] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@49b9ba6a
+2026-04-25 07:25:43.727 [main] [] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-25 07:25:43.930 [main] [] INFO  org.flywaydb.core.internal.license.VersionPrinter - Flyway Community Edition 9.22.3 by Redgate
+2026-04-25 07:25:43.931 [main] [] INFO  org.flywaydb.core.internal.license.VersionPrinter - See release notes here: https://rd.gt/416ObMi
+2026-04-25 07:25:43.932 [main] [] INFO  org.flywaydb.core.internal.license.VersionPrinter - 
+2026-04-25 07:25:43.974 [main] [] INFO  org.flywaydb.core.internal.resource.ResourceNameValidator - 1 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-04-25 07:25:43.976 [main] [] INFO  org.flywaydb.core.internal.resource.ResourceNameValidator - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-04-25 07:25:43.991 [main] [] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/orderdb (PostgreSQL 13.3)
+2026-04-25 07:25:44.146 [main] [] INFO  org.flywaydb.core.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.096s)
+2026-04-25 07:25:44.185 [main] [] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "public": 2
+2026-04-25 07:25:44.194 [main] [] INFO  org.flywaydb.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-04-25 07:25:44.499 [main] [] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-25 07:25:44.632 [main] [] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-25 07:25:44.730 [main] [] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-25 07:25:45.297 [main] [] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-25 07:25:47.706 [main] [] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-25 07:25:47.789 [main] [] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-25 07:25:48.588 [main] [] INFO  org.springframework.data.jpa.repository.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-25 07:25:49.864 [main] [] INFO  com.fooddelivery.orderservice.config.KafkaConfig - producerFactory started — bootstrapServers=localhost:9092
+2026-04-25 07:25:49.867 [main] [] INFO  com.fooddelivery.orderservice.config.KafkaConfig - producerFactory completed — producer configured with acks=all idempotence=true
+2026-04-25 07:25:49.945 [main] [] INFO  com.fooddelivery.orderservice.config.KafkaConfig - consumerFactory started — bootstrapServers=localhost:9092 groupId=order-service-group
+2026-04-25 07:25:49.947 [main] [] INFO  com.fooddelivery.orderservice.config.KafkaConfig - consumerFactory completed — groupId=order-service-group
+2026-04-25 07:25:49.973 [main] [] INFO  com.fooddelivery.orderservice.config.SwaggerConfig - openAPI started — configuring Swagger metadata
+2026-04-25 07:25:49.978 [main] [] INFO  com.fooddelivery.orderservice.config.SwaggerConfig - openAPI completed — Swagger metadata configured
+2026-04-25 07:25:51.894 [main] [] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 4 endpoint(s) beneath base path '/actuator'
+2026-04-25 07:25:52.143 [main] [] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2026-04-25 07:25:52.252 [main] [] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+2026-04-25 07:25:52.577 [main] [] INFO  org.springframework.kafka.core.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-delivery-notification-group-1, groupId=delivery-notification-group] Subscribed to topic(s): order-status-changed
+2026-04-25 07:25:52.644 [main] [] INFO  com.fooddelivery.orderservice.OrderServiceApplication - Started OrderServiceApplication in 18.786 seconds (process running for 23.195)
+2026-04-25 07:25:53.862 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  org.springframework.kafka.listener.KafkaMessageListenerContainer - delivery-notification-group: partitions assigned: [order-status-changed-0]
+2026-04-25 07:29:08.614 [http-nio-8081-exec-1] [] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-25 07:29:08.614 [http-nio-8081-exec-1] [] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-25 07:29:08.620 [http-nio-8081-exec-1] [] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2026-04-25 07:29:08.635 [http-nio-8081-exec-1] [dc2a4703-5852-4af8-be3f-f54528fd1191] DEBUG com.fooddelivery.orderservice.filter.MdcLoggingFilter - MdcLoggingFilter — correlationId=dc2a4703-5852-4af8-be3f-f54528fd1191 assigned to POST /api/v1/orders
+2026-04-25 07:29:08.636 [http-nio-8081-exec-1] [dc2a4703-5852-4af8-be3f-f54528fd1191] INFO  com.fooddelivery.orderservice.filter.AuthFilter - AuthFilter started — POST /api/v1/orders
+2026-04-25 07:29:08.636 [http-nio-8081-exec-1] [dc2a4703-5852-4af8-be3f-f54528fd1191] INFO  com.fooddelivery.orderservice.filter.AuthFilter - AuthFilter completed — customerId=550e8400-e29b-41d4-a716-446655440000 authorized
+2026-04-25 07:29:09.177 [http-nio-8081-exec-1] [dc2a4703-5852-4af8-be3f-f54528fd1191] INFO  com.fooddelivery.orderservice.controller.OrderController - POST /api/v1/orders customerId=550e8400-e29b-41d4-a716-446655440000 idempotencyKey=test-key-001
+2026-04-25 07:30:01.866 [HikariPool-1 housekeeper] [] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m17s988ms120µs500ns).
+2026-04-25 07:30:17.768 [http-nio-8081-exec-1] [dc2a4703-5852-4af8-be3f-f54528fd1191] INFO  com.fooddelivery.orderservice.service.OrderService - placeOrder started — customerId=550e8400-e29b-41d4-a716-446655440000 idempotencyKey=test-key-001
+2026-04-25 07:30:36.918 [http-nio-8081-exec-1] [dc2a4703-5852-4af8-be3f-f54528fd1191] INFO  com.fooddelivery.orderservice.service.OrderService - placeOrder — idempotency hit for key=test-key-001 returning stored response
+2026-04-25 07:30:37.604 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  org.springframework.kafka.listener.KafkaMessageListenerContainer - delivery-notification-group: partitions lost: [order-status-changed-0]
+2026-04-25 07:30:38.214 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  org.springframework.kafka.listener.KafkaMessageListenerContainer - delivery-notification-group: partitions revoked: [order-status-changed-0]
+2026-04-25 07:30:43.657 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  org.springframework.kafka.listener.KafkaMessageListenerContainer - delivery-notification-group: partitions assigned: [order-status-changed-0]
+2026-04-25 07:31:38.227 [HikariPool-1 housekeeper] [] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m3s447ms366µs600ns).
+2026-04-25 07:31:40.505 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  org.springframework.kafka.listener.KafkaMessageListenerContainer - delivery-notification-group: partitions lost: [order-status-changed-0]
+2026-04-25 07:31:40.506 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  org.springframework.kafka.listener.KafkaMessageListenerContainer - delivery-notification-group: partitions revoked: [order-status-changed-0]
+2026-04-25 07:31:41.809 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  org.springframework.kafka.listener.KafkaMessageListenerContainer - delivery-notification-group: partitions assigned: [order-status-changed-0]
+2026-04-25 07:32:49.696 [HikariPool-1 housekeeper] [] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m11s469ms904µs500ns).
+2026-04-25 07:32:49.812 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  org.springframework.kafka.listener.KafkaMessageListenerContainer - delivery-notification-group: partitions lost: [order-status-changed-0]
+2026-04-25 07:32:49.813 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  org.springframework.kafka.listener.KafkaMessageListenerContainer - delivery-notification-group: partitions revoked: [order-status-changed-0]
+2026-04-25 07:32:49.839 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  org.springframework.kafka.listener.KafkaMessageListenerContainer - delivery-notification-group: partitions assigned: [order-status-changed-0]
+2026-04-25 07:33:23.702 [http-nio-8081-exec-8] [054aefc8-ca1b-45df-8eb1-09df1627e975] DEBUG com.fooddelivery.orderservice.filter.MdcLoggingFilter - MdcLoggingFilter — correlationId=054aefc8-ca1b-45df-8eb1-09df1627e975 assigned to POST /api/v1/orders
+2026-04-25 07:33:23.703 [http-nio-8081-exec-8] [054aefc8-ca1b-45df-8eb1-09df1627e975] INFO  com.fooddelivery.orderservice.filter.AuthFilter - AuthFilter started — POST /api/v1/orders
+2026-04-25 07:33:23.703 [http-nio-8081-exec-8] [054aefc8-ca1b-45df-8eb1-09df1627e975] INFO  com.fooddelivery.orderservice.filter.AuthFilter - AuthFilter completed — customerId=550e8400-e29b-41d4-a716-446655440000 authorized
+2026-04-25 07:33:23.717 [http-nio-8081-exec-8] [054aefc8-ca1b-45df-8eb1-09df1627e975] INFO  com.fooddelivery.orderservice.controller.OrderController - POST /api/v1/orders customerId=550e8400-e29b-41d4-a716-446655440000 idempotencyKey=test-key-001
+2026-04-25 07:33:31.470 [http-nio-8081-exec-8] [054aefc8-ca1b-45df-8eb1-09df1627e975] INFO  com.fooddelivery.orderservice.service.OrderService - placeOrder started — customerId=550e8400-e29b-41d4-a716-446655440000 idempotencyKey=test-key-001
+2026-04-25 07:33:34.916 [http-nio-8081-exec-8] [054aefc8-ca1b-45df-8eb1-09df1627e975] INFO  com.fooddelivery.orderservice.service.OrderService - placeOrder — idempotency hit for key=test-key-001 returning stored response
+2026-04-25 07:33:59.731 [http-nio-8081-exec-2] [176c3015-e731-4103-b88c-45dda041059d] DEBUG com.fooddelivery.orderservice.filter.MdcLoggingFilter - MdcLoggingFilter — correlationId=176c3015-e731-4103-b88c-45dda041059d assigned to POST /api/v1/orders
+2026-04-25 07:33:59.731 [http-nio-8081-exec-2] [176c3015-e731-4103-b88c-45dda041059d] INFO  com.fooddelivery.orderservice.filter.AuthFilter - AuthFilter started — POST /api/v1/orders
+2026-04-25 07:33:59.732 [http-nio-8081-exec-2] [176c3015-e731-4103-b88c-45dda041059d] INFO  com.fooddelivery.orderservice.filter.AuthFilter - AuthFilter completed — customerId=550e8400-e29b-41d4-a716-446655440000 authorized
+2026-04-25 07:33:59.756 [http-nio-8081-exec-2] [176c3015-e731-4103-b88c-45dda041059d] WARN  com.fooddelivery.orderservice.exception.GlobalExceptionHandler - handleValidationErrors — fields=[items[0].name: name must not be blank, items[0].quantity: quantity must be at least 1, items[0].unitPrice: unitPrice must be zero or positive, items[0].menuItemId: menuItemId must not be blank]
+2026-04-25 07:34:16.205 [http-nio-8081-exec-7] [fbb798df-9ba3-41c4-8cf5-aee1e70af99b] DEBUG com.fooddelivery.orderservice.filter.MdcLoggingFilter - MdcLoggingFilter — correlationId=fbb798df-9ba3-41c4-8cf5-aee1e70af99b assigned to POST /api/v1/orders
+2026-04-25 07:34:16.205 [http-nio-8081-exec-7] [fbb798df-9ba3-41c4-8cf5-aee1e70af99b] INFO  com.fooddelivery.orderservice.filter.AuthFilter - AuthFilter started — POST /api/v1/orders
+2026-04-25 07:34:16.206 [http-nio-8081-exec-7] [fbb798df-9ba3-41c4-8cf5-aee1e70af99b] INFO  com.fooddelivery.orderservice.filter.AuthFilter - AuthFilter completed — customerId=550e8400-e29b-41d4-a716-446655440000 authorized
+2026-04-25 07:34:16.207 [http-nio-8081-exec-7] [fbb798df-9ba3-41c4-8cf5-aee1e70af99b] INFO  com.fooddelivery.orderservice.controller.OrderController - POST /api/v1/orders customerId=550e8400-e29b-41d4-a716-446655440000 idempotencyKey=test-key-outbox-001
+2026-04-25 07:34:24.123 [http-nio-8081-exec-7] [fbb798df-9ba3-41c4-8cf5-aee1e70af99b] INFO  com.fooddelivery.orderservice.service.OrderService - placeOrder started — customerId=550e8400-e29b-41d4-a716-446655440000 idempotencyKey=test-key-outbox-001
+2026-04-25 07:34:34.801 [http-nio-8081-exec-7] [fbb798df-9ba3-41c4-8cf5-aee1e70af99b] INFO  com.fooddelivery.orderservice.service.OrderTransactionalService - placeOrderTransactional started — customerId=550e8400-e29b-41d4-a716-446655440000 idempotencyKey=test-key-outbox-001
+2026-04-25 07:34:43.680 [http-nio-8081-exec-7] [fbb798df-9ba3-41c4-8cf5-aee1e70af99b] DEBUG com.fooddelivery.orderservice.service.OrderTransactionalService - buildOrder started — customerId=550e8400-e29b-41d4-a716-446655440000 itemCount=1
+2026-04-25 07:34:43.694 [http-nio-8081-exec-7] [fbb798df-9ba3-41c4-8cf5-aee1e70af99b] DEBUG com.fooddelivery.orderservice.service.OrderTransactionalService - buildOrder completed — orderId=db84db64-42ea-42ae-835e-9b3f1276edaf totalAmount=45.00
+2026-04-25 07:34:47.309 [http-nio-8081-exec-7] [fbb798df-9ba3-41c4-8cf5-aee1e70af99b] DEBUG com.fooddelivery.orderservice.service.OrderTransactionalService - persistOrder started — orderId=db84db64-42ea-42ae-835e-9b3f1276edaf
+2026-04-25 07:34:51.555 [http-nio-8081-exec-7] [fbb798df-9ba3-41c4-8cf5-aee1e70af99b] INFO  com.fooddelivery.orderservice.service.OrderTransactionalService - persistOrder completed — orderId=db84db64-42ea-42ae-835e-9b3f1276edaf totalAmount=45.00 itemCount=1
+2026-04-25 07:34:54.969 [http-nio-8081-exec-7] [fbb798df-9ba3-41c4-8cf5-aee1e70af99b] DEBUG com.fooddelivery.orderservice.service.OrderTransactionalService - persistOutboxEvent started — orderId=db84db64-42ea-42ae-835e-9b3f1276edaf
+2026-04-25 07:35:02.083 [http-nio-8081-exec-7] [fbb798df-9ba3-41c4-8cf5-aee1e70af99b] DEBUG com.fooddelivery.orderservice.service.OrderTransactionalService - persistOutboxEvent completed — orderId=db84db64-42ea-42ae-835e-9b3f1276edaf
+2026-04-25 07:35:04.647 [http-nio-8081-exec-7] [fbb798df-9ba3-41c4-8cf5-aee1e70af99b] DEBUG com.fooddelivery.orderservice.service.OrderTransactionalService - persistIdempotencyKey started — key=test-key-outbox-001 orderId=db84db64-42ea-42ae-835e-9b3f1276edaf
+2026-04-25 07:35:22.752 [http-nio-8081-exec-7] [fbb798df-9ba3-41c4-8cf5-aee1e70af99b] DEBUG com.fooddelivery.orderservice.service.OrderTransactionalService - persistIdempotencyKey completed — key=test-key-outbox-001 orderId=db84db64-42ea-42ae-835e-9b3f1276edaf
+2026-04-25 07:35:30.402 [http-nio-8081-exec-7] [fbb798df-9ba3-41c4-8cf5-aee1e70af99b] INFO  com.fooddelivery.orderservice.service.OrderTransactionalService - placeOrderTransactional completed — orderId=db84db64-42ea-42ae-835e-9b3f1276edaf idempotencyKey=test-key-outbox-001
+2026-04-25 07:35:34.356 [http-nio-8081-exec-7] [fbb798df-9ba3-41c4-8cf5-aee1e70af99b] INFO  com.fooddelivery.orderservice.service.OrderService - placeOrder completed — customerId=550e8400-e29b-41d4-a716-446655440000 idempotencyKey=test-key-outbox-001 httpStatus=201
+2026-04-25 07:35:35.083 [scheduling-1] [] INFO  com.fooddelivery.orderservice.outbox.OutboxPoller - pollAndPublish — found 1 unpublished events
+2026-04-25 07:35:35.083 [scheduling-1] [] INFO  com.fooddelivery.orderservice.outbox.OutboxPoller - publish started — eventId=b880cdc4-3f00-4d34-8738-4afc6d436222 orderId=db84db64-42ea-42ae-835e-9b3f1276edaf type=ORDER_PLACED
+2026-04-25 07:35:35.083 [scheduling-1] [] INFO  com.fooddelivery.orderservice.kafka.KafkaOrderEventPublisher - publish started — topic=order-status-changed orderId=db84db64-42ea-42ae-835e-9b3f1276edaf
+2026-04-25 07:35:35.219 [scheduling-1] [] INFO  com.fooddelivery.orderservice.kafka.KafkaOrderEventPublisher - publish completed — topic=order-status-changed orderId=db84db64-42ea-42ae-835e-9b3f1276edaf
+2026-04-25 07:35:35.220 [scheduling-1] [] INFO  com.fooddelivery.orderservice.outbox.OutboxPoller - publish completed — eventId=b880cdc4-3f00-4d34-8738-4afc6d436222 orderId=db84db64-42ea-42ae-835e-9b3f1276edaf
+2026-04-25 07:35:35.221 [scheduling-1] [] INFO  com.fooddelivery.orderservice.outbox.OutboxPoller - pollAndPublish completed — processed 1 events
+2026-04-25 07:35:35.245 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  com.fooddelivery.orderservice.kafka.DeliveryNotificationConsumer - consume started — message received
+2026-04-25 07:35:35.246 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  com.fooddelivery.orderservice.kafka.DeliveryNotificationConsumer - consume — eventId=90cf2a51-a712-4b5a-a6d9-158a1d3727e5 orderId=db84db64-42ea-42ae-835e-9b3f1276edaf null -> PENDING
+2026-04-25 07:35:35.269 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  com.fooddelivery.orderservice.kafka.DeliveryNotificationConsumer - consume completed — eventId=90cf2a51-a712-4b5a-a6d9-158a1d3727e5 orderId=db84db64-42ea-42ae-835e-9b3f1276edaf persisted successfully
+2026-04-25 07:35:59.950 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  org.springframework.kafka.listener.KafkaMessageListenerContainer - delivery-notification-group: partitions revoked: [order-status-changed-0]
+2026-04-25 07:35:59.952 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  org.springframework.kafka.core.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-delivery-notification-group-1, groupId=delivery-notification-group] Unsubscribed all topics or patterns and assigned partitions
+2026-04-25 07:36:00.320 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] [] INFO  org.springframework.kafka.listener.KafkaMessageListenerContainer - delivery-notification-group: Consumer stopped
+2026-04-25 07:36:00.370 [SpringApplicationShutdownHook] [] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-25 07:36:00.377 [SpringApplicationShutdownHook] [] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-25 07:36:00.380 [SpringApplicationShutdownHook] [] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-25 07:42:07.127 [main] [] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-04-25 07:42:08.395 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:08.396 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:08.404 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 4 ms
+2026-04-25 07:42:08.956 [main] [] WARN  com.fooddelivery.orderservice.exception.GlobalExceptionHandler - handleValidationErrors — fields=[items: Order must contain at least one item]
+2026-04-25 07:42:09.144 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:09.144 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:09.144 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-25 07:42:09.323 [main] [] INFO  com.fooddelivery.orderservice.controller.OrderController - POST /api/v1/orders customerId=550e8400-e29b-41d4-a716-446655440000 idempotencyKey=test-key-001
+2026-04-25 07:42:09.334 [main] [] ERROR com.fooddelivery.orderservice.controller.OrderController - Failed to deserialize idempotency response for key=test-key-001
+java.lang.NullPointerException: Cannot invoke "com.fasterxml.jackson.databind.ObjectMapper.readValue(String, java.lang.Class)" because "this.objectMapper" is null
+	at com.fooddelivery.orderservice.controller.OrderController.placeOrder(OrderController.java:52) ~[classes/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.test.web.servlet.TestDispatcherServlet.service(TestDispatcherServlet.java:72) ~[spring-test-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.mock.web.MockFilterChain$ServletFilterProxy.doFilter(MockFilterChain.java:165) ~[spring-test-6.1.6.jar:6.1.6]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.1.6.jar:6.1.6]
+	at org.springframework.test.web.servlet.MockMvc.perform(MockMvc.java:201) ~[spring-test-6.1.6.jar:6.1.6]
+	at com.fooddelivery.orderservice.controller.OrderControllerTest.placeOrder_duplicateKey_returnsSameOrderId(OrderControllerTest.java:119) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728) ~[junit-platform-commons-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:63) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at com.intellij.junit5.JUnit5TestRunnerHelper.execute(JUnit5TestRunnerHelper.java:134) [junit5-rt.jar:?]
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:70) [junit5-rt.jar:?]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38) [junit-rt.jar:?]
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11) [idea_rt.jar:?]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:244) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:65) [junit-rt.jar:?]
+2026-04-25 07:42:09.553 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:09.556 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:09.560 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-25 07:42:09.625 [main] [] WARN  com.fooddelivery.orderservice.exception.GlobalExceptionHandler - handleTypeMismatch — Invalid value 'not-a-uuid' for parameter 'orderId'
+2026-04-25 07:42:09.669 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:09.670 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:09.670 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-25 07:42:09.737 [main] [] INFO  com.fooddelivery.orderservice.controller.OrderController - POST /api/v1/orders customerId=550e8400-e29b-41d4-a716-446655440000 idempotencyKey=test-key-001
+2026-04-25 07:42:09.737 [main] [] ERROR com.fooddelivery.orderservice.controller.OrderController - Failed to deserialize idempotency response for key=test-key-001
+java.lang.NullPointerException: Cannot invoke "com.fasterxml.jackson.databind.ObjectMapper.readValue(String, java.lang.Class)" because "this.objectMapper" is null
+	at com.fooddelivery.orderservice.controller.OrderController.placeOrder(OrderController.java:52) ~[classes/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.test.web.servlet.TestDispatcherServlet.service(TestDispatcherServlet.java:72) ~[spring-test-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.mock.web.MockFilterChain$ServletFilterProxy.doFilter(MockFilterChain.java:165) ~[spring-test-6.1.6.jar:6.1.6]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.1.6.jar:6.1.6]
+	at org.springframework.test.web.servlet.MockMvc.perform(MockMvc.java:201) ~[spring-test-6.1.6.jar:6.1.6]
+	at com.fooddelivery.orderservice.controller.OrderControllerTest.placeOrder_validRequest_returns201(OrderControllerTest.java:97) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728) ~[junit-platform-commons-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:63) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at com.intellij.junit5.JUnit5TestRunnerHelper.execute(JUnit5TestRunnerHelper.java:134) [junit5-rt.jar:?]
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:70) [junit5-rt.jar:?]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38) [junit-rt.jar:?]
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11) [idea_rt.jar:?]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:244) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:65) [junit-rt.jar:?]
+2026-04-25 07:42:09.784 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:09.785 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:09.785 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-25 07:42:09.860 [main] [] WARN  com.fooddelivery.orderservice.exception.GlobalExceptionHandler - handleValidationErrors — fields=[items[0].menuItemId: menuItemId must not be blank, items[0].quantity: quantity must be at least 1, items[0].unitPrice: unitPrice must be zero or positive, items[0].name: name must not be blank]
+2026-04-25 07:42:09.956 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:09.956 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:09.957 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-25 07:42:09.976 [main] [] INFO  com.fooddelivery.orderservice.controller.OrderController - PATCH /api/v1/orders/346b6657-92e6-49ec-8925-e60fef8cac4e/status customerId=550e8400-e29b-41d4-a716-446655440000 newStatus=CANCELLED
+2026-04-25 07:42:09.980 [main] [] WARN  com.fooddelivery.orderservice.exception.GlobalExceptionHandler - handleInvalidTransition — Cannot transition order 346b6657-92e6-49ec-8925-e60fef8cac4e from DELIVERED to CANCELLED
+2026-04-25 07:42:10.013 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:10.015 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:10.015 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-25 07:42:10.031 [main] [] INFO  com.fooddelivery.orderservice.controller.OrderController - GET /api/v1/orders/4b2dc43c-0e02-4cfb-9280-7667e2dfa457 customerId=550e8400-e29b-41d4-a716-446655440000
+2026-04-25 07:42:10.033 [main] [] WARN  com.fooddelivery.orderservice.exception.GlobalExceptionHandler - handleOrderNotFound — Order not found: 4b2dc43c-0e02-4cfb-9280-7667e2dfa457
+2026-04-25 07:42:10.070 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:10.070 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:10.071 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 1 ms
+2026-04-25 07:42:10.080 [main] [] INFO  com.fooddelivery.orderservice.controller.OrderController - PATCH /api/v1/orders/496f0b52-349d-45f8-8b99-6c696da0accc/status customerId=550e8400-e29b-41d4-a716-446655440000 newStatus=CONFIRMED
+2026-04-25 07:42:10.082 [main] [] WARN  com.fooddelivery.orderservice.exception.GlobalExceptionHandler - handleOrderNotFound — Order not found: 496f0b52-349d-45f8-8b99-6c696da0accc
+2026-04-25 07:42:10.123 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:10.123 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:10.124 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 1 ms
+2026-04-25 07:42:10.126 [main] [] INFO  com.fooddelivery.orderservice.controller.OrderController - GET /api/v1/orders/c991c152-a976-43db-9b62-3381afb344cf customerId=550e8400-e29b-41d4-a716-446655440000
+2026-04-25 07:42:10.162 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:10.165 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:10.166 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 1 ms
+2026-04-25 07:42:10.177 [main] [] INFO  com.fooddelivery.orderservice.controller.OrderController - PATCH /api/v1/orders/7a345f1c-9454-46c4-b4ff-5327c61ef85a/status customerId=550e8400-e29b-41d4-a716-446655440000 newStatus=CONFIRMED
+2026-04-25 07:42:10.229 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:10.229 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:10.230 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 1 ms
+2026-04-25 07:42:10.239 [main] [] INFO  com.fooddelivery.orderservice.controller.OrderController - PATCH /api/v1/orders/e8761c71-580d-421a-b7ef-39498e26f27c/status customerId=550e8400-e29b-41d4-a716-446655440000 newStatus=CONFIRMED
+2026-04-25 07:42:10.241 [main] [] WARN  com.fooddelivery.orderservice.exception.GlobalExceptionHandler - handleOrderOwnership — Customer 550e8400-e29b-41d4-a716-446655440000 is not authorized to access order e8761c71-580d-421a-b7ef-39498e26f27c
+2026-04-25 07:42:10.271 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:10.272 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:10.272 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-25 07:42:10.284 [main] [] WARN  com.fooddelivery.orderservice.exception.GlobalExceptionHandler - handleValidationErrors — fields=[status: status must not be blank]
+2026-04-25 07:42:10.329 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:10.330 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:10.330 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-25 07:42:10.334 [main] [] INFO  com.fooddelivery.orderservice.controller.OrderController - GET /api/v1/orders/5f50aba4-86c5-4faf-8540-4791d7212792 customerId=550e8400-e29b-41d4-a716-446655440000
+2026-04-25 07:42:10.335 [main] [] WARN  com.fooddelivery.orderservice.exception.GlobalExceptionHandler - handleOrderOwnership — Customer 550e8400-e29b-41d4-a716-446655440000 is not authorized to access order 5f50aba4-86c5-4faf-8540-4791d7212792
+2026-04-25 07:42:36.454 [main] [] INFO  com.fooddelivery.orderservice.service.OrderService - updateStatus started — orderId=3282d133-65d0-4b7d-b32d-5630d3530d68 customerId=550e8400-e29b-41d4-a716-446655440000 requestedStatus=FLYING
+2026-04-25 07:42:36.528 [main] [] INFO  com.fooddelivery.orderservice.service.OrderService - getOrder started — orderId=9f072040-4c54-46e3-bfc8-e57907563e7d customerId=550e8400-e29b-41d4-a716-446655440000
+2026-04-25 07:42:36.531 [main] [] INFO  com.fooddelivery.orderservice.service.OrderService - getOrder completed — orderId=9f072040-4c54-46e3-bfc8-e57907563e7d status=PENDING totalAmount=30.97
+2026-04-25 07:42:36.547 [main] [] INFO  com.fooddelivery.orderservice.service.OrderService - updateStatus started — orderId=d28f82d0-09a7-450f-83c6-462f33cddb5e customerId=550e8400-e29b-41d4-a716-446655440000 requestedStatus=CONFIRMED
+2026-04-25 07:42:36.560 [main] [] INFO  com.fooddelivery.orderservice.service.OrderService - placeOrder started — customerId=550e8400-e29b-41d4-a716-446655440000 idempotencyKey=test-key-001
+2026-04-25 07:42:36.561 [main] [] INFO  com.fooddelivery.orderservice.service.OrderService - placeOrder — idempotency hit for key=test-key-001 returning stored response
+2026-04-25 07:42:36.587 [main] [] INFO  com.fooddelivery.orderservice.service.OrderService - updateStatus started — orderId=f86c93fc-4bc2-4f2a-afca-b9ed2ce8a2ec customerId=550e8400-e29b-41d4-a716-446655440000 requestedStatus=CONFIRMED
+2026-04-25 07:42:36.587 [main] [] INFO  com.fooddelivery.orderservice.model.Order - Order f86c93fc-4bc2-4f2a-afca-b9ed2ce8a2ec already in status CONFIRMED — ignoring duplicate
+2026-04-25 07:42:36.588 [main] [] INFO  com.fooddelivery.orderservice.service.OrderService - updateStatus completed — orderId=f86c93fc-4bc2-4f2a-afca-b9ed2ce8a2ec previousStatus=CONFIRMED currentStatus=CONFIRMED
+2026-04-25 07:42:36.607 [main] [] INFO  com.fooddelivery.orderservice.service.OrderService - updateStatus started — orderId=ab6bd1a1-9537-4f68-a336-c639ee3d2f15 customerId=550e8400-e29b-41d4-a716-446655440000 requestedStatus=CANCELLED
+2026-04-25 07:42:36.619 [main] [] INFO  com.fooddelivery.orderservice.service.OrderService - getOrder started — orderId=d577507e-0966-4ebb-94da-f29e1ffdd758 customerId=ac4c41fd-8dd1-4ccc-b91d-7b4af404a265
+2026-04-25 07:42:36.634 [main] [] INFO  com.fooddelivery.orderservice.service.OrderService - placeOrder started — customerId=550e8400-e29b-41d4-a716-446655440000 idempotencyKey=new-key
+2026-04-25 07:42:36.635 [main] [] INFO  com.fooddelivery.orderservice.service.OrderService - placeOrder completed — customerId=550e8400-e29b-41d4-a716-446655440000 idempotencyKey=new-key httpStatus=201
+2026-04-25 07:42:36.730 [main] [] INFO  com.fooddelivery.orderservice.service.OrderService - updateStatus started — orderId=2c3c8aed-50a9-4a00-95ed-d604e430a2ad customerId=550e8400-e29b-41d4-a716-446655440000 requestedStatus=CONFIRMED
+2026-04-25 07:42:36.731 [main] [] INFO  com.fooddelivery.orderservice.model.Order - Order 2c3c8aed-50a9-4a00-95ed-d604e430a2ad status PENDING -> CONFIRMED
+2026-04-25 07:42:36.731 [main] [] INFO  com.fooddelivery.orderservice.service.OrderService - Order status persisted — orderId=2c3c8aed-50a9-4a00-95ed-d604e430a2ad status=CONFIRMED
+2026-04-25 07:42:36.732 [main] [] DEBUG com.fooddelivery.orderservice.service.OrderService - saveOutboxEvent — orderId=2c3c8aed-50a9-4a00-95ed-d604e430a2ad PENDING -> CONFIRMED
+2026-04-25 07:42:36.732 [main] [] DEBUG com.fooddelivery.orderservice.service.OrderService - saveOutboxEvent completed — orderId=2c3c8aed-50a9-4a00-95ed-d604e430a2ad
+2026-04-25 07:42:36.733 [main] [] INFO  com.fooddelivery.orderservice.service.OrderService - updateStatus completed — orderId=2c3c8aed-50a9-4a00-95ed-d604e430a2ad previousStatus=PENDING currentStatus=CONFIRMED
+2026-04-25 07:42:36.742 [main] [] INFO  com.fooddelivery.orderservice.service.OrderService - getOrder started — orderId=d743bdd8-202f-43bb-9314-1ba5102e5dd3 customerId=550e8400-e29b-41d4-a716-446655440000
+2026-04-25 07:42:47.151 [main] [] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-04-25 07:42:47.736 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:47.737 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:47.740 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 2 ms
+2026-04-25 07:42:48.091 [main] [] WARN  com.fooddelivery.orderservice.exception.GlobalExceptionHandler - handleValidationErrors — fields=[items: Order must contain at least one item]
+2026-04-25 07:42:48.227 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:48.227 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:48.227 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-25 07:42:48.314 [main] [] INFO  com.fooddelivery.orderservice.controller.OrderController - POST /api/v1/orders customerId=550e8400-e29b-41d4-a716-446655440000 idempotencyKey=test-key-001
+2026-04-25 07:42:48.319 [main] [] ERROR com.fooddelivery.orderservice.controller.OrderController - Failed to deserialize idempotency response for key=test-key-001
+java.lang.NullPointerException: Cannot invoke "com.fasterxml.jackson.databind.ObjectMapper.readValue(String, java.lang.Class)" because "this.objectMapper" is null
+	at com.fooddelivery.orderservice.controller.OrderController.placeOrder(OrderController.java:52) ~[classes/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.test.web.servlet.TestDispatcherServlet.service(TestDispatcherServlet.java:72) ~[spring-test-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.mock.web.MockFilterChain$ServletFilterProxy.doFilter(MockFilterChain.java:165) ~[spring-test-6.1.6.jar:6.1.6]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.1.6.jar:6.1.6]
+	at org.springframework.test.web.servlet.MockMvc.perform(MockMvc.java:201) ~[spring-test-6.1.6.jar:6.1.6]
+	at com.fooddelivery.orderservice.controller.OrderControllerTest.placeOrder_duplicateKey_returnsSameOrderId(OrderControllerTest.java:119) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728) ~[junit-platform-commons-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:63) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at com.intellij.junit5.JUnit5TestRunnerHelper.execute(JUnit5TestRunnerHelper.java:134) [junit5-rt.jar:?]
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:70) [junit5-rt.jar:?]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38) [junit-rt.jar:?]
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11) [idea_rt.jar:?]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:244) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:65) [junit-rt.jar:?]
+2026-04-25 07:42:48.369 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:48.369 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:48.369 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-25 07:42:48.385 [main] [] WARN  com.fooddelivery.orderservice.exception.GlobalExceptionHandler - handleTypeMismatch — Invalid value 'not-a-uuid' for parameter 'orderId'
+2026-04-25 07:42:48.419 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:48.419 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:48.420 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 1 ms
+2026-04-25 07:42:48.494 [main] [] INFO  com.fooddelivery.orderservice.controller.OrderController - POST /api/v1/orders customerId=550e8400-e29b-41d4-a716-446655440000 idempotencyKey=test-key-001
+2026-04-25 07:42:48.497 [main] [] ERROR com.fooddelivery.orderservice.controller.OrderController - Failed to deserialize idempotency response for key=test-key-001
+java.lang.NullPointerException: Cannot invoke "com.fasterxml.jackson.databind.ObjectMapper.readValue(String, java.lang.Class)" because "this.objectMapper" is null
+	at com.fooddelivery.orderservice.controller.OrderController.placeOrder(OrderController.java:52) ~[classes/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.test.web.servlet.TestDispatcherServlet.service(TestDispatcherServlet.java:72) ~[spring-test-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.mock.web.MockFilterChain$ServletFilterProxy.doFilter(MockFilterChain.java:165) ~[spring-test-6.1.6.jar:6.1.6]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.1.6.jar:6.1.6]
+	at org.springframework.test.web.servlet.MockMvc.perform(MockMvc.java:201) ~[spring-test-6.1.6.jar:6.1.6]
+	at com.fooddelivery.orderservice.controller.OrderControllerTest.placeOrder_validRequest_returns201(OrderControllerTest.java:97) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728) ~[junit-platform-commons-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:63) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at com.intellij.junit5.JUnit5TestRunnerHelper.execute(JUnit5TestRunnerHelper.java:134) [junit5-rt.jar:?]
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:70) [junit5-rt.jar:?]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38) [junit-rt.jar:?]
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11) [idea_rt.jar:?]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:244) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:65) [junit-rt.jar:?]
+2026-04-25 07:42:48.538 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:48.539 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:48.539 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-25 07:42:48.594 [main] [] WARN  com.fooddelivery.orderservice.exception.GlobalExceptionHandler - handleValidationErrors — fields=[items[0].menuItemId: menuItemId must not be blank, items[0].quantity: quantity must be at least 1, items[0].unitPrice: unitPrice must be zero or positive, items[0].name: name must not be blank]
+2026-04-25 07:42:48.650 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:48.651 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:48.651 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-25 07:42:48.673 [main] [] INFO  com.fooddelivery.orderservice.controller.OrderController - PATCH /api/v1/orders/dd78c1b0-ca99-4879-85a6-c87b14d573f0/status customerId=550e8400-e29b-41d4-a716-446655440000 newStatus=CANCELLED
+2026-04-25 07:42:48.677 [main] [] WARN  com.fooddelivery.orderservice.exception.GlobalExceptionHandler - handleInvalidTransition — Cannot transition order dd78c1b0-ca99-4879-85a6-c87b14d573f0 from DELIVERED to CANCELLED
+2026-04-25 07:42:48.710 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:48.711 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:48.713 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 1 ms
+2026-04-25 07:42:48.718 [main] [] INFO  com.fooddelivery.orderservice.controller.OrderController - GET /api/v1/orders/b9d2a703-74d5-4d9b-a09e-6ee396c8e316 customerId=550e8400-e29b-41d4-a716-446655440000
+2026-04-25 07:42:48.719 [main] [] WARN  com.fooddelivery.orderservice.exception.GlobalExceptionHandler - handleOrderNotFound — Order not found: b9d2a703-74d5-4d9b-a09e-6ee396c8e316
+2026-04-25 07:42:48.755 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:48.756 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:48.758 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 1 ms
+2026-04-25 07:42:48.771 [main] [] INFO  com.fooddelivery.orderservice.controller.OrderController - PATCH /api/v1/orders/d428434e-79a8-4176-a291-2bee128f03eb/status customerId=550e8400-e29b-41d4-a716-446655440000 newStatus=CONFIRMED
+2026-04-25 07:42:48.775 [main] [] WARN  com.fooddelivery.orderservice.exception.GlobalExceptionHandler - handleOrderNotFound — Order not found: d428434e-79a8-4176-a291-2bee128f03eb
+2026-04-25 07:42:48.804 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:48.805 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:48.805 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-25 07:42:48.810 [main] [] INFO  com.fooddelivery.orderservice.controller.OrderController - GET /api/v1/orders/128f27ce-57bb-4791-8c7a-f7ac4d767d7e customerId=550e8400-e29b-41d4-a716-446655440000
+2026-04-25 07:42:48.854 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:48.854 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:48.854 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-25 07:42:48.862 [main] [] INFO  com.fooddelivery.orderservice.controller.OrderController - PATCH /api/v1/orders/22bb3e32-39cd-420a-82ee-250ca42dcfa2/status customerId=550e8400-e29b-41d4-a716-446655440000 newStatus=CONFIRMED
+2026-04-25 07:42:48.891 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:48.892 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:48.893 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-25 07:42:48.905 [main] [] INFO  com.fooddelivery.orderservice.controller.OrderController - PATCH /api/v1/orders/7f19a40d-e08d-40a2-85f2-6c55052f83bf/status customerId=550e8400-e29b-41d4-a716-446655440000 newStatus=CONFIRMED
+2026-04-25 07:42:48.908 [main] [] WARN  com.fooddelivery.orderservice.exception.GlobalExceptionHandler - handleOrderOwnership — Customer 550e8400-e29b-41d4-a716-446655440000 is not authorized to access order 7f19a40d-e08d-40a2-85f2-6c55052f83bf
+2026-04-25 07:42:48.935 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:48.935 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:48.936 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-25 07:42:48.954 [main] [] WARN  com.fooddelivery.orderservice.exception.GlobalExceptionHandler - handleValidationErrors — fields=[status: status must not be blank]
+2026-04-25 07:42:48.985 [main] [] INFO  org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-25 07:42:48.985 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2026-04-25 07:42:48.986 [main] [] INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-25 07:42:48.990 [main] [] INFO  com.fooddelivery.orderservice.controller.OrderController - GET /api/v1/orders/001498b0-8641-4d06-87c2-e074c64ef8bf customerId=550e8400-e29b-41d4-a716-446655440000
+2026-04-25 07:42:48.992 [main] [] WARN  com.fooddelivery.orderservice.exception.GlobalExceptionHandler - handleOrderOwnership — Customer 550e8400-e29b-41d4-a716-446655440000 is not authorized to access order 001498b0-8641-4d06-87c2-e074c64ef8bf

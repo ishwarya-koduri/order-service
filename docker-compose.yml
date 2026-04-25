@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
 
-  # ── POSTGRESQL ──────────────────────────────
+  # ── POSTGRESQL ──────────────────────────────────────────────────────────
   postgres:
     image: postgres:15-alpine
     container_name: orderservice-postgres
@@ -20,7 +20,7 @@ services:
       timeout: 5s
       retries: 5
 
-  # ── ZOOKEEPER (required by Kafka) ───────────
+  # ── ZOOKEEPER (required by Kafka) ───────────────────────────────────────
   zookeeper:
     image: confluentinc/cp-zookeeper:7.5.0
     container_name: orderservice-zookeeper
@@ -33,7 +33,7 @@ services:
       timeout: 5s
       retries: 5
 
-  # ── KAFKA ────────────────────────────────────
+  # ── KAFKA ────────────────────────────────────────────────────────────────
   kafka:
     image: confluentinc/cp-kafka:7.5.0
     container_name: orderservice-kafka
@@ -55,7 +55,7 @@ services:
       timeout: 10s
       retries: 5
 
-  # ── ORDER SERVICE ────────────────────────────
+  # ── ORDER SERVICE ─────────────────────────────────────────────────────────
   order-service:
     build: .
     container_name: orderservice-app

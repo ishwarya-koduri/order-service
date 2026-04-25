@@ -1,15 +1,14 @@
 # Order Service
 
-A production-grade order processing service for a food delivery platform.
-Handles order placement, status lifecycle management, and coordinates with
-downstream services via Kafka events.
+A production-grade order processing service for a food delivery platform. Handles order placement, status lifecycle management, and coordinates with downstream services via Kafka events.
 
-Built with Java 17 · Spring Boot 3 · PostgreSQL · Apache Kafka · Flyway
+**Stack:** Java 17 · Spring Boot 3.2.5 · PostgreSQL · Apache Kafka · Flyway · Log4j2
 
 ---
 
 ## Table of Contents
 
+- [Architecture](#architecture)
 - [How to Run](#how-to-run)
 - [API Overview](#api-overview)
 - [Design Decisions](#design-decisions)
@@ -21,6 +20,37 @@ Built with Java 17 · Spring Boot 3 · PostgreSQL · Apache Kafka · Flyway
 
 ---
 
+## Architecture
+
+### System Design Diagram
+
+![System Architecture](docs/diagrams/design-diagram.png)
+
+### Request Flow Diagram
+
+![Request Flow](docs/diagrams/request-flow-diagram.png)
+
+### Package Structure
+
+```
+com.fooddelivery.orderservice
+├── config/         KafkaConfig, SwaggerConfig, ApplicationLogger
+├── controller/     OrderController, OrderApi (Swagger contract interface)
+├── dto/            Request and response DTOs, IdempotencyResult
+├── exception/      Domain exceptions, GlobalExceptionHandler
+├── filter/         AuthFilter, MdcLoggingFilter
+├── kafka/          KafkaOrderEventPublisher, DeliveryNotificationConsumer, OrderStatusChangedEvent
+├── mapper/         OrderMapper — all mapping logic in one place
+├── model/          Order, OrderItem, OrderStatus, AuditEntity
+│                   OutboxEvent, IdempotencyKeyEntity, DeliveryNotificationEntity
+├── outbox/         OutboxPoller
+├── repository/     OrderJpaRepository, OutboxRepository
+│                   IdempotencyKeyRepository, DeliveryNotificationRepository
+└── service/        OrderService, OrderTransactionalService
+```
+
+---
+
 ## How to Run
 
 ### Prerequisites
@@ -29,20 +59,21 @@ Built with Java 17 · Spring Boot 3 · PostgreSQL · Apache Kafka · Flyway
 - Java 17
 - Maven 3.9+
 
-### Start infrastructure and application
+### Start everything with docker-compose
 
 ```bash
 # Clone the repository
 git clone <repo-url>
 cd order-service
 
-# Start PostgreSQL, Kafka, Zookeeper and the application
+# Start PostgreSQL, Zookeeper, Kafka and the application
 docker-compose up --build
 ```
 
 The application starts on `http://localhost:8080`
 
 Swagger UI is available at:
+
 ```
 http://localhost:8080/swagger-ui/index.html
 ```
@@ -57,8 +88,6 @@ docker-compose up postgres zookeeper kafka -d
 ./mvnw spring-boot:run
 ```
 
-Application starts on `http://localhost:8080`
-
 ### Health check
 
 ```
@@ -71,12 +100,12 @@ GET http://localhost:8080/actuator/health
 
 All endpoints require the `X-Customer-Id` header.
 
-| Method  | Endpoint                            | Description              |
-|---------|-------------------------------------|--------------------------|
-| `POST`  | `/api/v1/orders`                    | Place a new order        |
-| `PATCH` | `/api/v1/orders/{orderId}/status`   | Update order status      |
-| `GET`   | `/api/v1/orders/{orderId}`          | Get order by ID          |
-| `GET`   | `/api/v1/orders`                    | List orders (paginated)  |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/v1/orders` | Place a new order |
+| `PATCH` | `/api/v1/orders/{orderId}/status` | Update order status |
+| `GET` | `/api/v1/orders/{orderId}` | Get order by ID |
+| `GET` | `/api/v1/orders` | List orders (paginated) |
 
 ### Place an order
 
@@ -179,17 +208,9 @@ curl "http://localhost:8080/api/v1/orders?status=PENDING&page=0&size=20" \
 
 ### 1. Transactional Outbox Pattern — DB and Kafka consistency
 
-The biggest challenge in this service is keeping the database write
-and the Kafka publish consistent. A naive dual-write approach
-(save to DB, then publish to Kafka) has a critical gap — if the
-service crashes between the two operations, the order is saved but
-the event is never published. Payment is never initiated.
+The biggest challenge in this service is keeping the database write and the Kafka publish consistent. A naive dual-write approach saves to DB and then publishes to Kafka. If the service crashes between the two, the order is saved but the event is never published. Payment is never initiated.
 
-**The solution:** Every status change writes an `outbox_events` row
-in the **same `@Transactional` block** as the order mutation.
-A `@Scheduled` OutboxPoller reads unpublished events every 5 seconds
-and publishes them to Kafka. Events are marked published **only after**
-a confirmed broker acknowledgement.
+**The solution:** Every status change writes an `outbox_events` row in the same `@Transactional` block as the order mutation. A `@Scheduled` OutboxPoller reads unpublished events every 5 seconds and publishes them to Kafka. Events are marked published only after a confirmed broker acknowledgement.
 
 ```
 [Single DB transaction]
@@ -203,8 +224,7 @@ a confirmed broker acknowledgement.
   → UPDATE published = true  (only on success)
 ```
 
-If the service crashes after the DB commit, the outbox row survives.
-On restart, the poller picks it up and publishes it. No event is lost.
+The transaction uses three dedicated private methods — `persistOrder()`, `persistOutboxEvent()`, and `persistIdempotencyKey()` — each with its own try-catch block for targeted error handling. A `TransactionSynchronizationManager` callback is registered at transaction start and logs `Transaction ROLLED BACK` explicitly if anything fails, giving full visibility into rollbacks in the logs.
 
 Full decision rationale: [docs/ADR-001.md](docs/ADR-001.md)
 
@@ -212,37 +232,29 @@ Full decision rationale: [docs/ADR-001.md](docs/ADR-001.md)
 
 ### 2. Idempotency — duplicate order prevention
 
-The `POST /api/v1/orders` endpoint accepts a client-supplied
-`Idempotency-Key` header. The first request creates the order and
-stores the exact HTTP response (status code + body) in the
-`idempotency_keys` table. Any subsequent request with the same key
-returns the stored response immediately — no duplicate order is created.
+The `POST /api/v1/orders` endpoint accepts a client-supplied `Idempotency-Key` header. The first request creates the order and stores the exact HTTP response (status code + body) in the `idempotency_keys` table. Any subsequent request with the same key returns the stored response immediately — no duplicate order is created.
 
-The idempotency check happens **outside** the `@Transactional` block
-to avoid holding a DB connection during the lookup.
+The idempotency check happens outside the `@Transactional` block to avoid holding a DB connection during the lookup.
 
 ```
 Request arrives with Idempotency-Key
-    ↓
+         ↓
 Check idempotency_keys table
-    ↓ key exists                  ↓ key not found
-Return stored response        Create order + store response
-(same status + body)          (inside one transaction)
+         ↓                              ↓
+   Key found                      Key not found
+Return stored response         Create order + store response
+(same status + body)           (inside one transaction)
 ```
+
+Race condition handling: if two identical requests arrive simultaneously and both pass the check, the second insert throws `DataIntegrityViolationException` on the unique constraint. This is caught in `persistIdempotencyKey()`, the stored response is fetched and returned — no 500 reaches the client.
 
 ---
 
 ### 3. Concurrency control — optimistic locking
 
-Concurrent status updates on the same order are handled with
-optimistic locking via JPA `@Version`. Every UPDATE includes
-`WHERE version = currentVersion`. If two requests load the same
-order at version 5 and both try to update, only one succeeds.
-The other gets an `OptimisticLockException` and returns
-`409 Conflict` — the client retries cleanly.
+Concurrent status updates on the same order are handled with optimistic locking via JPA `@Version`. Every UPDATE includes `WHERE version = currentVersion`. If two requests load the same order at version 5 and both try to update, only one succeeds. The other gets an `OptimisticLockException` → `409 Conflict`. The client retries cleanly.
 
-This prevents silent data corruption without the overhead of
-pessimistic row locking.
+This prevents silent data corruption without the overhead of pessimistic row locking.
 
 ---
 
@@ -259,29 +271,19 @@ DELIVERED        → (terminal)
 CANCELLED        → (terminal)
 ```
 
-Any transition not in this map returns `422 Unprocessable Entity`
-with a clear message. The map is the single source of truth —
-no scattered if-else chains across the codebase.
+Any transition not in this map returns `422 Unprocessable Entity`. The map is the single source of truth — no scattered if-else chains across the codebase. `isTerminal()` returns true for DELIVERED and CANCELLED — once in these states, no further updates are accepted.
 
 ---
 
-### 5. Package structure
+### 5. Constructor injection throughout
 
-Standard Spring Boot layered architecture:
+Every class uses explicit constructor injection instead of `@RequiredArgsConstructor` or field-level `@Autowired`. Spring automatically uses a single constructor for dependency injection — no annotation needed. This makes dependencies visible, fields `final`, and classes independently testable without a Spring context.
 
-```
-controller/   HTTP boundary — request/response mapping only
-service/      Business orchestration
-model/        JPA entities
-repository/   Spring Data repositories
-kafka/        Kafka producer and consumer
-outbox/       Outbox poller
-mapper/       OrderMapper — all DTO mappings in one place
-filter/       Auth and MDC logging filters
-exception/    Domain exceptions and global handler
-config/       Kafka, Swagger, logging configuration
-dto/          Request and response objects
-```
+---
+
+### 6. Structured logging with correlation IDs
+
+`ApplicationLogger` wraps Log4j2 and is used across every class instead of `@Slf4j`. Every method logs at entry and exit. The `MdcLoggingFilter` injects a `correlationId` (from `X-Correlation-Id` header or auto-generated UUID) into every log line — enabling end-to-end request tracing across all logs.
 
 ---
 
@@ -289,75 +291,51 @@ dto/          Request and response objects
 
 **Scenario: Service crashes after DB write but before Kafka publish**
 
-After the `@Transactional` block commits, the order row and the
-`outbox_events` row (with `published = false`) are both safely
-on disk in PostgreSQL. The service then crashes before the
-`OutboxPoller` has a chance to read and publish the event.
+After the `@Transactional` block commits, the order row and the `outbox_events` row with `published = false` are both safely on disk. The service crashes before `OutboxPoller` can publish the event.
 
 **System state at crash:**
 - `orders` table has the correct updated status
-- `outbox_events` table has an unpublished row with the event payload
+- `outbox_events` has an unpublished row with the full event payload
 - Kafka has received nothing
-- Downstream services (Payment, Notification) are unaware of the change
+- Downstream services are unaware of the change
 
 **Recovery on client retry:**
 
-If this was an order placement (`POST /api/v1/orders`), the client
-retries with the same `Idempotency-Key`. The service restarts,
-the idempotency check finds the stored key, and returns the original
-`201 Created` response immediately. No duplicate order is created.
+If this was an order placement (`POST /api/v1/orders`), the client retries with the same `Idempotency-Key`. The idempotency check finds the stored key and returns the original `201 Created` response. No duplicate order is created.
 
-If this was a status update (`PATCH /orders/{id}/status`), the client
-retries. The service restarts, loads the order (which already has
-the new status committed), detects that `currentStatus == requestedStatus`,
-and returns `200 OK` silently. No duplicate outbox event is written.
+If this was a status update (`PATCH /orders/{id}/status`), the client retries. The service loads the order (already at the new status), `transitionTo()` detects the duplicate, and returns `200 OK` silently. No duplicate outbox event is written.
 
 **Event delivery:**
 
-On restart, the `OutboxPoller` wakes up within 5 seconds, finds the
-unpublished `outbox_events` row, and publishes it to Kafka.
-Downstream services receive the event — slightly delayed, but guaranteed.
+On restart, `OutboxPoller` wakes up within 5 seconds, finds the unpublished row, and publishes to Kafka. Downstream services receive the event — slightly delayed, but guaranteed.
 
-**User experience:**
+**Log visibility:**
 
-The user sees no error. Their client received a successful response
-before the crash (or retries successfully after). The order processes
-normally. The only observable effect is a potential delay of up to
-5 seconds before downstream systems react to the status change.
+The `TransactionSynchronizationManager` callback logs the following when a transaction rolls back:
+
+```
+Transaction ROLLED BACK — all writes undone customerId=... idempotencyKey=...
+```
 
 ---
 
 ## Ambiguity Decision
 
-**Question: What should happen when a customer requests cancellation
-of an order that is already DELIVERED?**
+**Question: What should happen when a customer requests cancellation of an order that is already DELIVERED?**
 
-**Decision:** Return `422 Unprocessable Entity` with the message:
-*"Cannot transition order {id} from DELIVERED to CANCELLED"*
+**Decision:** Return `422 Unprocessable Entity` with the message: `"Cannot transition order {id} from DELIVERED to CANCELLED"`
 
 **Reasoning:**
 
-`DELIVERED` is a terminal state. The order has been physically
-delivered to the customer — there is nothing to cancel at the
-Order Service level. Any refund or dispute for a delivered order
-is a separate business concern that belongs to a dedicated
-Refund or Dispute Service, not the Order Service.
+DELIVERED is a terminal state. The order has been physically delivered to the customer — there is nothing to cancel at the Order Service level. Any refund or dispute for a delivered order is a separate business concern that belongs to a dedicated Refund or Dispute Service.
 
-Allowing the Order Service to transition a DELIVERED order to
-CANCELLED would require compensating transactions (driver recall,
-refund initiation, inventory adjustment) that are out of scope.
-
-The Order Service's responsibility ends when the order is delivered.
-This decision keeps the state machine clean and the service boundary clear.
+Allowing the Order Service to transition a DELIVERED order to CANCELLED would require compensating transactions (driver recall, refund initiation, inventory adjustment) that are out of scope. The state machine keeps the service boundary clean and the responsibility clear.
 
 ---
 
 ## Status Idempotency
 
-The status update endpoint may be called up to 3 times with the
-same transition by the internal retry mechanism.
-
-This is handled in `Order.transitionTo()`:
+The status update endpoint may be called up to 3 times with the same transition by the internal retry mechanism. `Order.transitionTo()` handles this:
 
 ```java
 public void transitionTo(OrderStatus newStatus) {
@@ -378,8 +356,7 @@ order.transitionTo(requestedStatus);
 boolean transitioned = !previousStatus.equals(order.getStatus());
 
 if (transitioned) {
-    orderRepository.save(order);
-    saveOutboxEvent(order, previousStatus, order.getStatus());
+    persistUpdatedOrder(order, previousStatus);
 }
 ```
 
@@ -395,62 +372,28 @@ The same Kafka event is never published twice for the same transition.
 
 ## What I Would Do Differently
 
-**Replace OutboxPoller with Debezium CDC**
-The poller works correctly but polls every 5 seconds. Debezium reads
-the PostgreSQL Write-Ahead Log directly and publishes to Kafka
-with near-zero latency and no DB polling overhead.
+**Replace OutboxPoller with Debezium CDC** — reads the PostgreSQL Write-Ahead Log directly and publishes to Kafka with near-zero latency and no DB polling overhead.
 
-**Add API Gateway for authentication**
-The simplified `X-Customer-Id` header would be replaced by JWT
-Bearer token validation at an API Gateway (AWS API Gateway or Kong).
-The gateway extracts the customer identity and forwards it — the
-Order Service never handles raw tokens.
+**Add API Gateway for authentication** — the simplified `X-Customer-Id` header would be replaced by JWT Bearer token validation at an API Gateway (AWS API Gateway or Kong). The gateway extracts the customer identity and forwards it — the Order Service never handles raw tokens.
 
-**Add Load Balancer for horizontal scaling**
-Multiple Order Service instances behind an AWS ALB. The OutboxPoller
-already handles multi-instance safety via `FOR UPDATE SKIP LOCKED`.
+**Add outbox cleanup job** — a scheduled job to delete `outbox_events` rows older than the Kafka retention period (7 days) to prevent unbounded table growth.
 
-**Add outbox cleanup job**
-A scheduled job to delete `outbox_events` rows older than the
-Kafka retention period (7 days) to prevent unbounded table growth.
+**Add Dead Letter Topic for failed consumer messages** — if `DeliveryNotificationConsumer` fails to process a message after retries, route it to a Dead Letter Topic for manual inspection rather than silently dropping it.
 
-**Add Dead Letter Topic for failed consumer messages**
-If `DeliveryNotificationConsumer` fails to process a message after
-retries, it should be routed to a Dead Letter Topic for manual
-inspection rather than silently dropped.
+**Add distributed tracing** — integrate OpenTelemetry with Jaeger or AWS X-Ray for end-to-end request tracing across Order Service, Kafka, and downstream services.
 
-**Add distributed tracing**
-Integrate OpenTelemetry with Jaeger or AWS X-Ray for end-to-end
-request tracing across Order Service, Kafka, and downstream services.
+**Add Load Balancer for horizontal scaling** — multiple Order Service instances behind an AWS ALB. The OutboxPoller already handles multi-instance safety via `FOR UPDATE SKIP LOCKED`.
 
 ---
 
 ## Known Limitations
 
-**No real authentication**
-`X-Customer-Id` is a simplified stub. In production this would
-be a validated JWT token processed by an API Gateway.
+**No real authentication** — `X-Customer-Id` is a simplified stub. In production this would be a validated JWT token processed by an API Gateway.
 
-**Outbox table grows unboundedly**
-Published events are never deleted. A cleanup job would be needed
-in production.
+**Outbox table grows unboundedly** — published events are never deleted. A cleanup job would be needed in production.
 
-**No retry limit on OutboxPoller**
-A permanently broken event (e.g. invalid payload) will be retried
-forever. In production a max retry count and Dead Letter Topic
-would handle this.
+**No retry limit on OutboxPoller** — a permanently broken event will be retried forever. In production a max retry count and Dead Letter Topic would handle this.
 
-**Single Kafka broker**
-`docker-compose` runs one Kafka broker. Production would use a
-multi-broker cluster (minimum 3) with replication factor 3.
+**Single Kafka broker** — `docker-compose` runs one Kafka broker. Production would use a multi-broker cluster (minimum 3) with replication factor 3.
 
-**No integration tests**
-Due to time constraints, only unit tests are included. Integration
-tests using Testcontainers (real PostgreSQL + embedded Kafka) would
-be added in a production project.
-
-**No pagination on outbox polling**
-The OutboxPoller fetches 50 events per cycle. If a large backlog
-accumulates (e.g. after a long Kafka outage), it could take many
-cycles to drain. A more aggressive batch size or concurrent polling
-would help in production.
+**No integration tests** — due to time constraints, only unit tests are included. Integration tests using Testcontainers (real PostgreSQL + embedded Kafka) would be added in a production project.

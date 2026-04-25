@@ -1,5 +1,7 @@
 package com.fooddelivery.orderservice.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fooddelivery.orderservice.config.ApplicationLogger;
 import com.fooddelivery.orderservice.dto.CreateOrderRequest;
 import com.fooddelivery.orderservice.dto.IdempotencyResult;
@@ -8,18 +10,15 @@ import com.fooddelivery.orderservice.dto.UpdateOrderStatusRequest;
 import com.fooddelivery.orderservice.exception.EventSerializationException;
 import com.fooddelivery.orderservice.exception.OrderNotFoundException;
 import com.fooddelivery.orderservice.exception.OrderPersistenceException;
+import com.fooddelivery.orderservice.kafka.OrderStatusChangedEvent;
 import com.fooddelivery.orderservice.mapper.OrderMapper;
 import com.fooddelivery.orderservice.model.IdempotencyKeyEntity;
 import com.fooddelivery.orderservice.model.Order;
 import com.fooddelivery.orderservice.model.OrderStatus;
 import com.fooddelivery.orderservice.model.OutboxEvent;
-import com.fooddelivery.orderservice.kafka.OrderStatusChangedEvent;
 import com.fooddelivery.orderservice.repository.IdempotencyKeyRepository;
 import com.fooddelivery.orderservice.repository.OrderJpaRepository;
 import com.fooddelivery.orderservice.repository.OutboxRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -34,17 +33,31 @@ import java.util.UUID;
  * Handles all order operations — placement, status updates and retrieval.
  */
 @Service
-@RequiredArgsConstructor
 public class OrderService {
 
     private static final ApplicationLogger log = ApplicationLogger.getLogger(OrderService.class);
-
     private final OrderJpaRepository orderRepository;
     private final IdempotencyKeyRepository idempotencyKeyRepository;
     private final OutboxRepository outboxRepository;
     private final OrderTransactionalService orderTransactionalService;
-    private final ObjectMapper objectMapper;
     private final OrderMapper orderMapper;
+    private final ObjectMapper objectMapper;
+
+    public OrderService(
+            OrderJpaRepository orderRepository,
+            IdempotencyKeyRepository  idempotencyKeyRepository,
+            OutboxRepository outboxRepository,
+            OrderTransactionalService orderTransactionalService,
+            OrderMapper orderMapper,
+            ObjectMapper objectMapper
+    ) {
+        this.orderRepository = orderRepository;
+        this.idempotencyKeyRepository = idempotencyKeyRepository;
+        this.outboxRepository = outboxRepository;
+        this.orderTransactionalService = orderTransactionalService;
+        this.orderMapper = orderMapper;
+        this.objectMapper = objectMapper;
+    }
 
     /**
      * Places a new order.

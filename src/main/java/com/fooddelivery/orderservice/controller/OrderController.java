@@ -4,13 +4,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fooddelivery.orderservice.config.ApplicationLogger;
 import com.fooddelivery.orderservice.dto.CreateOrderRequest;
 import com.fooddelivery.orderservice.dto.ErrorResponse;
+import com.fooddelivery.orderservice.dto.IdempotencyResult;
 import com.fooddelivery.orderservice.dto.OrderResponse;
 import com.fooddelivery.orderservice.dto.UpdateOrderStatusRequest;
 import com.fooddelivery.orderservice.filter.AuthFilter;
 import com.fooddelivery.orderservice.service.OrderService;
-import com.fooddelivery.orderservice.dto.IdempotencyResult;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -25,13 +24,19 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping("/api/v1/orders")
-@RequiredArgsConstructor
 public class OrderController implements OrderApi {
 
-    private static final ApplicationLogger log = ApplicationLogger.getLogger(OrderController.class);
+    private static final ApplicationLogger log =
+            ApplicationLogger.getLogger(OrderController.class);
 
     private final OrderService orderService;
     private final ObjectMapper objectMapper;
+
+    // Explicit constructor — makes dependencies visible and testable without Spring context
+    public OrderController(OrderService orderService, ObjectMapper objectMapper) {
+        this.orderService  = orderService;
+        this.objectMapper  = objectMapper;
+    }
 
     @Override
     @PostMapping
@@ -40,7 +45,8 @@ public class OrderController implements OrderApi {
             @RequestHeader("Idempotency-Key") String idempotencyKey,
             @Valid @RequestBody CreateOrderRequest request
     ) {
-        log.info("POST /api/v1/orders customerId={} idempotencyKey={}", customerId, idempotencyKey);
+        log.info("POST /api/v1/orders customerId={} idempotencyKey={}",
+                customerId, idempotencyKey);
 
         IdempotencyResult result = orderService.placeOrder(
                 idempotencyKey,
@@ -53,12 +59,17 @@ public class OrderController implements OrderApi {
                     result.responseBody(), OrderResponse.class
             );
             return ResponseEntity.status(result.httpStatus()).body(responseBody);
+
         } catch (Exception e) {
-            log.error("Failed to deserialize idempotency response for key={}", idempotencyKey, e);
+            log.error("Failed to deserialize idempotency response for key={}",
+                    idempotencyKey, e);
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(ErrorResponse.of(500, "Internal Server Error",
-                            "Failed to process response", "/api/v1/orders"));
+                    .body(ErrorResponse.of(
+                            500, "Internal Server Error",
+                            "Failed to process response",
+                            "/api/v1/orders"
+                    ));
         }
     }
 
@@ -89,7 +100,11 @@ public class OrderController implements OrderApi {
     ) {
         log.info("GET /api/v1/orders/{} customerId={}", orderId, customerId);
 
-        OrderResponse response = orderService.getOrder(orderId, UUID.fromString(customerId));
+        OrderResponse response = orderService.getOrder(
+                orderId,
+                UUID.fromString(customerId)
+        );
+
         return ResponseEntity.ok(response);
     }
 

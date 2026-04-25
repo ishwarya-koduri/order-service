@@ -2,11 +2,7 @@ package com.fooddelivery.orderservice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fooddelivery.orderservice.dto.CreateOrderRequest;
-import com.fooddelivery.orderservice.dto.IdempotencyResult;
-import com.fooddelivery.orderservice.dto.OrderItemRequest;
-import com.fooddelivery.orderservice.dto.OrderResponse;
-import com.fooddelivery.orderservice.dto.UpdateOrderStatusRequest;
+import com.fooddelivery.orderservice.dto.*;
 import com.fooddelivery.orderservice.exception.GlobalExceptionHandler;
 import com.fooddelivery.orderservice.exception.InvalidStatusTransitionException;
 import com.fooddelivery.orderservice.exception.OrderNotFoundException;
@@ -17,7 +13,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
@@ -34,7 +29,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("OrderController — HTTP Layer")
@@ -43,14 +39,12 @@ class OrderControllerTest {
     @Mock
     private OrderService orderService;
 
-    @InjectMocks
     private OrderController orderController;
-
-    private MockMvc     mockMvc;
+    private MockMvc mockMvc;
     private ObjectMapper objectMapper;
 
-    private UUID          customerId;
-    private UUID          orderId;
+    private UUID customerId;
+    private UUID orderId;
     private OrderResponse mockResponse;
 
     @BeforeEach
@@ -58,8 +52,9 @@ class OrderControllerTest {
         objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
 
-        // Standalone setup — no Spring context, fast execution
-        // GlobalExceptionHandler added so exception mapping is tested
+        // Clean constructor injection — no @InjectMocks needed
+        orderController = new OrderController(orderService, objectMapper);
+
         mockMvc = MockMvcBuilders
                 .standaloneSetup(orderController)
                 .setControllerAdvice(new GlobalExceptionHandler())

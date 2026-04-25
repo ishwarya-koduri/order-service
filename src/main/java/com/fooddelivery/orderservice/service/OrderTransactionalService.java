@@ -10,15 +10,10 @@ import com.fooddelivery.orderservice.exception.EventSerializationException;
 import com.fooddelivery.orderservice.exception.OrderPersistenceException;
 import com.fooddelivery.orderservice.kafka.OrderStatusChangedEvent;
 import com.fooddelivery.orderservice.mapper.OrderMapper;
-import com.fooddelivery.orderservice.model.IdempotencyKeyEntity;
-import com.fooddelivery.orderservice.model.Order;
-import com.fooddelivery.orderservice.model.OrderItem;
-import com.fooddelivery.orderservice.model.OrderStatus;
-import com.fooddelivery.orderservice.model.OutboxEvent;
+import com.fooddelivery.orderservice.model.*;
 import com.fooddelivery.orderservice.repository.IdempotencyKeyRepository;
 import com.fooddelivery.orderservice.repository.OrderJpaRepository;
 import com.fooddelivery.orderservice.repository.OutboxRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -30,7 +25,6 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -38,7 +32,6 @@ import java.util.UUID;
  * Separate bean from OrderService so @Transactional proxy works correctly.
  */
 @Service
-@RequiredArgsConstructor
 public class OrderTransactionalService {
 
     private static final ApplicationLogger log =
@@ -49,6 +42,20 @@ public class OrderTransactionalService {
     private final OutboxRepository outboxRepository;
     private final OrderMapper orderMapper;
     private final ObjectMapper objectMapper;
+
+    public OrderTransactionalService(
+            OrderJpaRepository orderRepository,
+            IdempotencyKeyRepository idempotencyKeyRepository,
+            OutboxRepository outboxRepository,
+            OrderMapper orderMapper,
+            ObjectMapper objectMapper
+    ) {
+        this.orderRepository = orderRepository;
+        this.idempotencyKeyRepository = idempotencyKeyRepository;
+        this.outboxRepository = outboxRepository;
+        this.orderMapper = orderMapper;
+        this.objectMapper = objectMapper;
+    }
 
     /**
      * Orchestrates order placement in a single transaction.

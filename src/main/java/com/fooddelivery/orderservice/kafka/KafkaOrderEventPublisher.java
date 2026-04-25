@@ -2,7 +2,6 @@ package com.fooddelivery.orderservice.kafka;
 
 import com.fooddelivery.orderservice.config.ApplicationLogger;
 import com.fooddelivery.orderservice.exception.KafkaPublishException;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
@@ -16,7 +15,6 @@ import java.util.concurrent.TimeUnit;
  * go to the same partition and are consumed in order.
  */
 @Component
-@RequiredArgsConstructor
 public class KafkaOrderEventPublisher {
 
     private static final ApplicationLogger log = ApplicationLogger.getLogger(KafkaOrderEventPublisher.class);
@@ -26,6 +24,10 @@ public class KafkaOrderEventPublisher {
 
     @Value("${app.kafka.topic.order-status-changed}")
     private String topic;
+
+    public KafkaOrderEventPublisher(KafkaTemplate<String, String> kafkaTemplate) {
+        this.kafkaTemplate = kafkaTemplate;
+    }
 
     /**
      * Publishes a JSON payload to the order-status-changed topic.

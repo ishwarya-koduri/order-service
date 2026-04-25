@@ -4,7 +4,6 @@ import com.fooddelivery.orderservice.config.ApplicationLogger;
 import com.fooddelivery.orderservice.kafka.KafkaOrderEventPublisher;
 import com.fooddelivery.orderservice.model.OutboxEvent;
 import com.fooddelivery.orderservice.repository.OutboxRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -18,14 +17,20 @@ import java.util.List;
  * because the query uses SELECT FOR UPDATE SKIP LOCKED.
  */
 @Component
-@RequiredArgsConstructor
 public class OutboxPoller {
 
     private static final ApplicationLogger log = ApplicationLogger.getLogger(OutboxPoller.class);
     private static final int BATCH_SIZE = 50;
-
     private final OutboxRepository outboxRepository;
     private final KafkaOrderEventPublisher kafkaPublisher;
+
+    public OutboxPoller(
+            OutboxRepository outboxRepository,
+            KafkaOrderEventPublisher kafkaPublisher
+    ) {
+        this.outboxRepository = outboxRepository;
+        this.kafkaPublisher = kafkaPublisher;
+    }
 
     /**
      * Reads a batch of unpublished events and publishes each to Kafka.

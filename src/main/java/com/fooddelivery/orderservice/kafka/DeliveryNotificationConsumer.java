@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fooddelivery.orderservice.config.ApplicationLogger;
 import com.fooddelivery.orderservice.model.DeliveryNotificationEntity;
 import com.fooddelivery.orderservice.repository.DeliveryNotificationRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
@@ -17,7 +16,6 @@ import java.util.UUID;
  * a delivery notification record for each event received.
  */
 @Component
-@RequiredArgsConstructor
 public class DeliveryNotificationConsumer {
 
     private static final ApplicationLogger log = ApplicationLogger.getLogger(DeliveryNotificationConsumer.class);
@@ -25,6 +23,13 @@ public class DeliveryNotificationConsumer {
     private final DeliveryNotificationRepository deliveryNotificationRepository;
     private final ObjectMapper objectMapper;
 
+    public DeliveryNotificationConsumer(
+            DeliveryNotificationRepository deliveryNotificationRepository,
+            ObjectMapper objectMapper
+    ) {
+        this.deliveryNotificationRepository = deliveryNotificationRepository;
+        this.objectMapper = objectMapper;
+    }
     /**
      * Listens to order-status-changed topic and persists a delivery notification.
      * Duplicate events are handled via UNIQUE constraint on event_id —
